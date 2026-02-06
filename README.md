@@ -50,8 +50,6 @@ An enterprise-level integration platform that automates the deployment of AI mod
 
 ## 📬 Contact & Links
 * 📧 **Email:** [yusufcicekk@proton.me](mailto:yusufcicekk@proton.me) 
-* 💼 **LinkedIn:** [yusufcicek](https://linkedin.com/in/yusufcicek) 
-* 🌐 **GitHub:** [yusufcicek](https://github.com/yusufcicek) 
-
+* 💼 **LinkedIn:** [yusufcicek](https://www.linkedin.com/in/yusufcicekk) 
 ---
 *Building the future of autonomous systems, one optimized kernel at a time.*
