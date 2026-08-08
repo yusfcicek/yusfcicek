@@ -1,55 +1,113 @@
-# 🚀 Yusuf Çiçek | AI Software Engineer
+# Yusuf Çiçek
 
-### **Bridging High-Performance AI with Scalable MLOps Infrastructure**
-Currently an **Artificial Intelligence Software Engineer at Baykar Technologies** , I specialize in developing high-efficiency computer vision systems and automating the lifecycle of AI models through robust DevOps/MLOps practices.
+**Artificial Intelligence Software Engineer @ Baykar Technologies**
 
----
+I build personalization and retrieval systems that serve real traffic: recommendation
+pipelines, hybrid retrieval over vector and graph stores, and LLM-based ranking — with the
+MLOps around them to keep it running. ~4 years across recommender systems, GenAI, and
+computer vision.
 
-## 🛠️ Technical Arsenal
-
-| Category | Proficiency |
-| :--- | :--- |
-| **Languages** | C++23 (Factory/Decorator Patterns), Python, SQL, C#, Git, OOP  |
-| **MLOps & DevOps** | Docker, Nginx, CI/CD, AWS, Azure, Embedded Linux  |
-| **Inference & Streaming** | TensorRT, FFmpeg API (Sub-10ms latency), GStreamer, ZeroMQ  |
-| **Deep Learning** | YOLOv12, Mask R-CNN, Detectron2, Transformers, VLMs  |
-| **GenAI & LLM** | Qwen-3 (32B), RAG, Chain-of-Thought (CoT) Prompting, LangChain  |
+[![Email](https://img.shields.io/badge/Email-yusufcicekk%40proton.me-8B89CC?style=flat-square&logo=protonmail&logoColor=white)](mailto:yusufcicekk@proton.me)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-yusufcicek-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yusufcicek)
 
 ---
 
-## 🌟 Featured Projects
+## What I work on
 
-### **OpenHands Review Agent (AI Code Review Agent)**
-An intelligent CI/CD integrated agent that understands the semantic impact of code changes beyond simple diffs.
-* **Smart Triage:** Classifies changes (SKIP, AUTO_APPROVE, CRITICAL) to optimize review costs and focus.
-* **Semantic Analysis:** Detects ripple effects in code logic that standard linters miss.
-* **Policy Enforcement:** Automatically applies custom review policies and SAST security gates using LLM-based reasoning.
+**Personalization, Search & Recommendation** — Architected NSosyal's "For You" feed: a
+modular, event-driven pipeline (Go, Python/gRPC, Kafka) covering candidate generation,
+retrieval, ranking, re-ranking and diversification.
 
-### **CVAT Remote Inference Server**
-An enterprise-level integration platform that automates the deployment of AI models for production labeling environments.
-* **Automation:** Auto-detects new model implementations and generates Nuclio deployment files for zero-config scaling.
-* **Efficiency:** Implements **Lazy Initialization** and **Smart Resource Management**, unloading idle models to optimize GPU memory.
-* **Orchestration:** Manages multiple model types (Detectors, Trackers, Interactors) through a unified FastAPI interface.
+- Hybrid 3-slot retrieval — collaborative signals (favourite / in-network authors,
+  social-proof boosting via Neo4j graph queries) alongside dense retrieval through Qdrant
+  ANN search over multimodal post embeddings.
+- Personalized learning-to-rank scorer — a weighted Alpha/Beta/Gamma model blending an 8B
+  multimodal LLM re-ranker, Wilson-score engagement decay and novelty signals, with weights
+  tuned online by Thompson Sampling multi-armed bandits.
+- Multimodal embeddings from an 8B vision-language model over text, image and video posts;
+  HDBSCAN clustering for topic discovery and MMR-based diversification that adapts to
+  real-time engagement.
+- Real-time user/context fusion — EMA offline profiling plus time-decayed online signal,
+  PCA dimensionality reduction, and an on-demand Redis-cached feed-materialization layer
+  for low-latency serving.
 
-### **High-Performance Multimedia API**
-* Designed and developed a reusable, scalable multimedia API in $C++$ using the FFmpeg API.
-* Leveraged the **Producer-Consumer Design Pattern** to achieve **sub-10ms real-time video streaming latency**.
-* Currently powering 4+ production projects.
+**LLM systems & developer tooling** — a token-aware Smart Memory Strategy that prioritizes
+security-critical insights inside a bounded context window, and a Dependency Impact
+Tracking system that performs Ripple Effect Analysis to catch indirect regressions in code
+outside the immediate git diff.
 
----
-
-## 📈 SOTA Performance & Engineering Impact
-
-* **YOLOv12 Optimization:** Reached **SOTA** precision by increasing mAP50 score from **98% to 99%** via HMM post-processing.
-* **Inference Speed:** Achieved a massive **72% FPS boost** on YOLOv8 and **17.5%** on Faster R-CNN using TensorRT and $C++23$.
-* **Segmentation Excellence:** Improved Detectron2's Mask R-CNN mAP by **33%** using a multi-channel fusion approach.
-* **LLM Reasoning:** Automated internal software analysis by applying **Few-shot and CoT prompting** on the **Qwen-3 32B** model.
-* **Video SOTA:** Enhanced MaskFreeVIS with an optical-flow fusion block, achieving a **4.4% mAP gain** on video sequences.
+**Platform** — a Go-based RBAC reverse proxy for LakeFS with GitLab OAuth, for
+authentication and granular access management.
 
 ---
 
-## 📬 Contact & Links
-* 📧 **Email:** [yusufcicekk@proton.me](mailto:yusufcicekk@proton.me) 
-* 💼 **LinkedIn:** [yusufcicek](https://www.linkedin.com/in/yusufcicekk) 
+## Featured projects
+
+### [Enterprise AI Code Review Agent](https://github.com/yusfcicek/code-reviewer) · Python
+
+An open-source AI code review agent for CI/CD pipelines. It triages a merge request before
+spending tokens on it, runs static analyzers over the changed files, asks an LLM for an
+architectural review, and turns the result into a deterministic pipeline verdict.
+
+- **Smart triage** — classifies each changed file (SKIP / AUTO_APPROVE / CRITICAL /
+  QUICK_SCAN / FULL_REVIEW) so LLM spend goes where it matters.
+- **Analysis beyond the diff** — AST-based semantic change classification, two-level
+  dependency ripple tracing, SAST mapped to CWE and OWASP Top 10, plus complexity, SOLID
+  and N+1 checks.
+- **Deterministic gate** — the PASS/WARN/FAIL verdict comes from static analysis, not model
+  output, so an unreachable LLM cannot turn a failing review into a passing one.
+- **Built to hold up** — clean domain/application/infrastructure layering enforced by an
+  import test, 804 tests at 92 % coverage, and a pipeline that runs the agent on its own
+  merge requests.
+
+### [CVAT Remote Inference Server](https://github.com/yusfcicek/cvat-remote-inference-server) · Python
+
+A FastAPI orchestrator that runs annotation models on dedicated remote GPU hosts and wires
+them into CVAT through auto-generated Nuclio functions.
+
+- Detectors, trackers and interactors behind one interface; multiple instances of the same
+  model with different weights.
+- New model implementations are auto-detected, registered, assigned a port and given
+  generated Nuclio deployment files — zero-config scaling.
+- Lazy initialization and idle-model unloading to keep GPU memory honest.
+
+### [Autonomous Curriculum Generator](https://github.com/yusfcicek/autonomous-curriculum-generator) · Python
+
+A LangGraph multi-agent system that generates CEFR-aligned language curricula as
+strictly-typed JSON, grounded by a RAG pipeline over Qdrant. Give it a language and a CEFR
+level; get back deduplicated, Pydantic-validated vocabulary and grammar.
+
 ---
-*Building the future of autonomous systems, one optimized kernel at a time.*
+
+## Toolbox
+
+**Recommenders & retrieval** — Recommendation Systems · Collaborative & Content-Based
+Filtering · Hybrid Recommenders · Learning-to-Rank · Multi-Armed Bandits (Thompson
+Sampling) · Dense/Sparse/Hybrid Retrieval · Semantic & Vector Search (Qdrant, HNSW, ANN) ·
+Re-Ranking & Diversification (MMR) · Feature Stores (Redis)
+
+**LLM, GenAI & multimodal** — Multimodal Embeddings (Qwen3-VL) · Vision-Language Models ·
+Agentic AI · RAG · LangChain · Hugging Face · Model Serving (OpenAI, vLLM)
+
+**AI/ML & computer vision** — Machine Learning · Deep Learning · Computer Vision · PyTorch ·
+TensorFlow · Object Detection & Segmentation · OpenCV · Scikit-Learn · Transformers
+
+**Deployment & systems** — MLOps · CI/CD · Event-Driven Architecture (Kafka) · gRPC ·
+TensorRT · K8s · Docker · GCP · AWS · Vertex AI · Azure · Redis · Qdrant · Neo4j · REST API
+
+**Languages** — Go · Python · C++ · SQL · PostgreSQL · Git · OOP · Design Patterns
+
+---
+
+## Background
+
+**Baykar Technologies** — Artificial Intelligence Software Engineer · Sep 2022 – present
+**Segion Analytics** — Founding Machine Learning Engineer · Oct 2020 – Oct 2021
+Built the API for an AI-powered autonomous expert system (four deep learning models,
+FastAPI), deployed on AWS with Nginx and Docker, and shipped end-to-end license plate
+detection and recognition that cut Character Error Rate 47 % and Word Error Rate 12 %
+against OCR baselines.
+
+**B.Sc. Computer Engineering**, Beykent University — GPA 3.55/4.00
+
+Turkish (native) · English (B2)
