@@ -8,7 +8,7 @@ MLOps around them to keep it running. ~4 years across recommender systems, GenAI
 computer vision.
 
 [![Email](https://img.shields.io/badge/Email-yusufcicekk%40proton.me-8B89CC?style=flat-square&logo=protonmail&logoColor=white)](mailto:yusufcicekk@proton.me)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-yusufcicek-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yusufcicek)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-yusufcicekk-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yusufcicekk)
 
 ---
 
@@ -110,7 +110,9 @@ TensorRT · K8s · Docker · GCP · AWS · Vertex AI · Azure · Redis · Qdrant
 ## Background
 
 **Baykar Technologies** — Artificial Intelligence Software Engineer · Sep 2022 – present
+
 **Segion Analytics** — Founding Machine Learning Engineer · Oct 2020 – Oct 2021
+
 Built the API for an AI-powered autonomous expert system (four deep learning models,
 FastAPI), deployed on AWS with Nginx and Docker, and shipped end-to-end license plate
 detection and recognition that cut Character Error Rate 47 % and Word Error Rate 12 %
