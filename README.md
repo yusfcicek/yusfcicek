@@ -1,6 +1,6 @@
 # Yusuf Çiçek
 
-**Artificial Intelligence Software Engineer @ Baykar Technologies**
+**Machine Learning Engineer — Recommender Systems & LLM** · Baykar Technologies
 
 I build personalization and retrieval systems that serve real traffic: recommendation
 pipelines, hybrid retrieval over vector and graph stores, and LLM-based ranking — with the
