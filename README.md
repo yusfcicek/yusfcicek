@@ -77,6 +77,14 @@ A LangGraph multi-agent system that generates CEFR-aligned language curricula as
 strictly-typed JSON, grounded by a RAG pipeline over Qdrant. Give it a language and a CEFR
 level; get back deduplicated, Pydantic-validated vocabulary and grammar.
 
+### [MaskFreeVIS — optical-flow data fusion](https://github.com/yusfcicek/MaskFreeVIS) · Python
+
+A fork of [SysCV/MaskFreeVIS](https://github.com/SysCV/MaskFreeVIS) (CVPR 2023) adding an
+early-fusion path that feeds Farnebäck dense optical flow into the backbone alongside the
+raw frame, so motion reaches the video instance segmentation model at train and inference
+time. Registry-driven and config-gated on detectron2, so the block is swappable and turns
+off cleanly.
+
 ---
 
 ## Toolbox
