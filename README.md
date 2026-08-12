@@ -46,19 +46,33 @@ authentication and granular access management.
 ### [Enterprise AI Code Review Agent](https://github.com/yusfcicek/code-reviewer) · Python
 
 An open-source AI code review agent for CI/CD pipelines. It triages a merge request before
-spending tokens on it, runs static analyzers over the changed files, asks an LLM for an
-architectural review, and turns the result into a deterministic pipeline verdict.
+spending tokens on it, runs static analyzers over the changed files, routes each file to a
+committee of specialist agents, and turns the result into a deterministic pipeline verdict.
 
 - **Smart triage** — classifies each changed file (SKIP / AUTO_APPROVE / CRITICAL /
   QUICK_SCAN / FULL_REVIEW) so LLM spend goes where it matters.
 - **Analysis beyond the diff** — AST-based semantic change classification, two-level
   dependency ripple tracing, SAST mapped to CWE and OWASP Top 10, plus complexity, SOLID
   and N+1 checks.
+- **A committee, not a prompt** — architecture, security, performance and dependency agents,
+  each with its own prompt, a narrowed tool catalogue and a weighted share of the file's
+  token budget. Security gets the largest share, because "spend more on security than on
+  style" should be something the system holds rather than something it hopes for.
+- **Hybrid retrieval, fully offline** — the checkout is chunked by syntax tree and indexed
+  twice, over BM25 and over embeddings, then fused by reciprocal rank and reduced by
+  maximal marginal relevance. No embedding service, no network call.
+- **The diff is hostile input** — declared trust boundaries, path confinement, a credential
+  deny-list, a per-review read budget and output redaction. A refused access becomes a
+  CRITICAL finding, so an injection attempt fails the pipeline instead of being mentioned
+  in the report.
 - **Deterministic gate** — the PASS/WARN/FAIL verdict comes from static analysis, not model
-  output, so an unreachable LLM cannot turn a failing review into a passing one.
-- **Built to hold up** — clean domain/application/infrastructure layering enforced by an
-  import test, 804 tests at 92 % coverage, and a pipeline that runs the agent on its own
-  merge requests.
+  output, so an unreachable LLM cannot turn a failing review into a passing one. A false
+  positive is suppressible one line or one file at a time, with a recorded reason and a
+  count in the report — never with a blanket off-switch.
+- **Built to hold up** — 25k lines in a hexagonal architecture with layering enforced by an
+  import test, 2631 tests at 94 % coverage, and lint, types, a dependency audit and
+  measured precision / recall / F1 floors all gating CI. The GitLab pipeline runs the agent
+  on the project's own merge requests.
 
 ### [CVAT Remote Inference Server](https://github.com/yusfcicek/cvat-remote-inference-server) · Python
 
